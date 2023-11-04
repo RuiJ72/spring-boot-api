@@ -1,5 +1,8 @@
+/* Rever esta aula 304 ->O problema parece estar nesta classe */
+
 package com.webservice.project.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import jakarta.persistence.Table;
 
@@ -15,6 +18,7 @@ public class Order implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd´HH:mm:ss´Z´", timezone = "GMT")
     private Instant moment;
 
     @ManyToOne
@@ -24,12 +28,12 @@ public class Order implements Serializable {
     public Order() {
 
     }
-    public Order(Long id, Instant moment, Order client) {
+    public Order(Long id, Instant moment, User client) {
         this.id = id;
         this.moment = moment;
+        this.client = client;
 
     }
-
     public Long getId() {
         return id;
     }
