@@ -1,6 +1,7 @@
 package com.webservice.project.entities;
 
 import jakarta.persistence.*;
+import jakarta.persistence.Table;
 
 import java.io.Serializable;
 import java.time.Instant;
@@ -18,16 +19,15 @@ public class Order implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "client_id")
-    private Order client;
+    private User client;
 
     public Order() {
 
     }
-
     public Order(Long id, Instant moment, Order client) {
         this.id = id;
         this.moment = moment;
-        this.client = client;
+
     }
 
     public Long getId() {
@@ -46,11 +46,11 @@ public class Order implements Serializable {
         this.moment = moment;
     }
 
-    public Order getClient() {
+    public User getClient() {
         return client;
     }
 
-    public void setClient(Order client) {
+    public void setClient(User client) {
         this.client = client;
     }
 
@@ -63,6 +63,7 @@ public class Order implements Serializable {
 
     @Override
     public int hashCode() {
+
         return Objects.hash(id);
     }
 }
