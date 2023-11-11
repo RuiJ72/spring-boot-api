@@ -1,5 +1,3 @@
-
-
 package com.webservice.project.entities;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
